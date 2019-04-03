@@ -1,26 +1,25 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import Thisweek from './components/Thisweek';
+import Popular from './components/Popular';
+import Mylist from './components/Mylist';
 
-class App extends Component {
+
+class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <div>
+            <ul>
+              <li><Link to="/">This week</Link></li>
+              <li><Link to="/popular/">popular</Link></li>
+              <li><Link to="/mylist/">my list</Link></li>
+            </ul>
+            <Route path="/" exact component={Thisweek} />
+            <Route path="/popular" component={Popular} />
+            <Route path="/mylist" component={Mylist} />
+        </div>
+      </Router>
     );
   }
 }
